@@ -14,16 +14,7 @@ import {
   Zap,
   Trophy,
   Calendar,
-  MessageSquare,
-  X,
-  Moon,
-  Sun,
-  Volume2,
-  VolumeX,
-  Globe,
-  User,
-  Shield,
-  Database
+  MessageSquare
 } from 'lucide-react';
 import { useAppStore } from '@/store/useAppStore';
 import { FocusTimer } from '@/components/FocusTimer';
@@ -224,30 +215,6 @@ function AILearningHub() {
 export default function Dashboard() {
   const { activeView, setActiveView, user, addNotification } = useAppStore();
   const [currentUser] = useState(mockUsers[0]); // Mock current user
-  const [showSettings, setShowSettings] = useState(false);
-  const [settings, setSettings] = useState({
-    theme: 'dark',
-    notifications: true,
-    sounds: true,
-    language: 'en',
-    focusTime: 25,
-    breakTime: 5,
-    longBreakTime: 15,
-    autoStartBreaks: false,
-    autoStartPomodoros: false
-  });
-
-  // Apply theme on mount and changes
-  useEffect(() => {
-    const root = document.documentElement;
-    if (settings.theme === 'light') {
-      root.classList.add('light-theme');
-      root.classList.remove('dark-theme');
-    } else {
-      root.classList.add('dark-theme');
-      root.classList.remove('light-theme');
-    }
-  }, [settings.theme]);
 
   useEffect(() => {
     // Mock user setup
@@ -688,13 +655,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div 
-      className={`min-h-screen transition-all duration-500 ${
-        settings.theme === 'light' 
-          ? 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 text-gray-900' 
-          : 'dark bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white'
-      }`}
-    >
+    <div className="min-h-screen bg-gray-900">
       {/* Header */}
       <header className="glass-card mx-6 mt-6 p-4 rounded-3xl flex justify-between items-center">
         <div className="flex items-center space-x-4">
@@ -761,7 +722,7 @@ export default function Dashboard() {
               icon={Settings} 
               label="Settings" 
               isActive={false} 
-              onClick={() => setShowSettings(true)} 
+              onClick={() => addNotification('Settings coming soon!', 'info')} 
             />
           </div>
         </nav>
@@ -776,9 +737,6 @@ export default function Dashboard() {
       <footer className="text-center text-gray-500 text-sm py-6">
         © 2024 Focus OS • Re-engineering attention for mastery
       </footer>
-
-      {/* Settings Modal */}
-      <SettingsModal />
     </div>
   );
 }
