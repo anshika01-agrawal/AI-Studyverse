@@ -1,5 +1,7 @@
 # Focus OS - Complete Setup and Integration Guide
 
+🚀 **Live Demo**: [https://ai-studyverse.vercel.app](https://ai-studyverse.vercel.app)
+
 ## 🚀 Quick Start
 
 ```bash
