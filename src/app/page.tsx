@@ -14,7 +14,16 @@ import {
   Zap,
   Trophy,
   Calendar,
-  MessageSquare
+  MessageSquare,
+  X,
+  Moon,
+  Sun,
+  Volume2,
+  VolumeX,
+  Globe,
+  User,
+  Shield,
+  Database
 } from 'lucide-react';
 import { useAppStore } from '@/store/useAppStore';
 import { FocusTimer } from '@/components/FocusTimer';
@@ -215,6 +224,18 @@ function AILearningHub() {
 export default function Dashboard() {
   const { activeView, setActiveView, user, addNotification } = useAppStore();
   const [currentUser] = useState(mockUsers[0]); // Mock current user
+  const [showSettings, setShowSettings] = useState(false);
+  const [settings, setSettings] = useState({
+    theme: 'dark',
+    notifications: true,
+    sounds: true,
+    language: 'en',
+    focusTime: 25,
+    breakTime: 5,
+    longBreakTime: 15,
+    autoStartBreaks: false,
+    autoStartPomodoros: false
+  });
 
   useEffect(() => {
     // Mock user setup
@@ -414,6 +435,246 @@ export default function Dashboard() {
     }
   };
 
+  const updateSetting = (key: string, value: any) => {
+    setSettings(prev => ({ ...prev, [key]: value }));
+    addNotification(`${key} updated successfully!`, 'success');
+  };
+
+  const SettingsModal = () => {
+    if (!showSettings) return null;
+
+    return (
+      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="bg-gray-800 rounded-3xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold text-white">Settings</h2>
+            <button 
+              onClick={() => setShowSettings(false)}
+              className="p-2 hover:bg-gray-700 rounded-xl transition-colors"
+            >
+              <X className="w-5 h-5 text-gray-400" />
+            </button>
+          </div>
+
+          <div className="space-y-6">
+            {/* Focus Settings */}
+            <div className="bg-gray-900/50 p-4 rounded-xl">
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
+                <Zap className="w-5 h-5 mr-2 text-yellow-400" />
+                Focus Timer Settings
+              </h3>
+              <div className="space-y-4">
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm text-gray-400 mb-2">Focus Time (minutes)</label>
+                    <input
+                      type="number"
+                      min="5"
+                      max="60"
+                      value={settings.focusTime}
+                      onChange={(e) => updateSetting('focusTime', parseInt(e.target.value))}
+                      className="w-full px-3 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-indigo-500 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-gray-400 mb-2">Short Break (minutes)</label>
+                    <input
+                      type="number"
+                      min="1"
+                      max="30"
+                      value={settings.breakTime}
+                      onChange={(e) => updateSetting('breakTime', parseInt(e.target.value))}
+                      className="w-full px-3 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-indigo-500 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-gray-400 mb-2">Long Break (minutes)</label>
+                    <input
+                      type="number"
+                      min="5"
+                      max="60"
+                      value={settings.longBreakTime}
+                      onChange={(e) => updateSetting('longBreakTime', parseInt(e.target.value))}
+                      className="w-full px-3 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-indigo-500 focus:outline-none"
+                    />
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300">Auto-start breaks</span>
+                  <button
+                    onClick={() => updateSetting('autoStartBreaks', !settings.autoStartBreaks)}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                      settings.autoStartBreaks ? 'bg-indigo-600' : 'bg-gray-600'
+                    }`}
+                  >
+                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                      settings.autoStartBreaks ? 'translate-x-6' : 'translate-x-1'
+                    }`} />
+                  </button>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300">Auto-start pomodoros</span>
+                  <button
+                    onClick={() => updateSetting('autoStartPomodoros', !settings.autoStartPomodoros)}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                      settings.autoStartPomodoros ? 'bg-indigo-600' : 'bg-gray-600'
+                    }`}
+                  >
+                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                      settings.autoStartPomodoros ? 'translate-x-6' : 'translate-x-1'
+                    }`} />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Appearance Settings */}
+            <div className="bg-gray-900/50 p-4 rounded-xl">
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
+                <Moon className="w-5 h-5 mr-2 text-blue-400" />
+                Appearance
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300">Theme</span>
+                  <div className="flex bg-gray-700 rounded-lg p-1">
+                    <button
+                      onClick={() => updateSetting('theme', 'dark')}
+                      className={`px-3 py-1 rounded-md flex items-center transition-colors ${
+                        settings.theme === 'dark' ? 'bg-indigo-600 text-white' : 'text-gray-400'
+                      }`}
+                    >
+                      <Moon className="w-4 h-4 mr-1" />
+                      Dark
+                    </button>
+                    <button
+                      onClick={() => updateSetting('theme', 'light')}
+                      className={`px-3 py-1 rounded-md flex items-center transition-colors ${
+                        settings.theme === 'light' ? 'bg-indigo-600 text-white' : 'text-gray-400'
+                      }`}
+                    >
+                      <Sun className="w-4 h-4 mr-1" />
+                      Light
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Notifications & Sound */}
+            <div className="bg-gray-900/50 p-4 rounded-xl">
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
+                <Bell className="w-5 h-5 mr-2 text-green-400" />
+                Notifications & Sound
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300">Push notifications</span>
+                  <button
+                    onClick={() => updateSetting('notifications', !settings.notifications)}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                      settings.notifications ? 'bg-indigo-600' : 'bg-gray-600'
+                    }`}
+                  >
+                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                      settings.notifications ? 'translate-x-6' : 'translate-x-1'
+                    }`} />
+                  </button>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-300">Sound effects</span>
+                  <button
+                    onClick={() => updateSetting('sounds', !settings.sounds)}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                      settings.sounds ? 'bg-indigo-600' : 'bg-gray-600'
+                    }`}
+                  >
+                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                      settings.sounds ? 'translate-x-6' : 'translate-x-1'
+                    }`} />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Language & Region */}
+            <div className="bg-gray-900/50 p-4 rounded-xl">
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
+                <Globe className="w-5 h-5 mr-2 text-purple-400" />
+                Language & Region
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm text-gray-400 mb-2">Language</label>
+                  <select
+                    value={settings.language}
+                    onChange={(e) => updateSetting('language', e.target.value)}
+                    className="w-full px-3 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-indigo-500 focus:outline-none"
+                  >
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {/* Account & Privacy */}
+            <div className="bg-gray-900/50 p-4 rounded-xl">
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
+                <Shield className="w-5 h-5 mr-2 text-red-400" />
+                Account & Privacy
+              </h3>
+              <div className="space-y-3">
+                <button className="w-full text-left px-4 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-gray-300">
+                  <div className="flex items-center">
+                    <User className="w-4 h-4 mr-3" />
+                    <span>Edit Profile</span>
+                  </div>
+                </button>
+                <button className="w-full text-left px-4 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-gray-300">
+                  <div className="flex items-center">
+                    <Database className="w-4 h-4 mr-3" />
+                    <span>Export Data</span>
+                  </div>
+                </button>
+                <button className="w-full text-left px-4 py-3 bg-red-900/30 hover:bg-red-900/50 rounded-lg transition-colors text-red-300">
+                  <span>Delete Account</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Save Button */}
+            <div className="pt-4 border-t border-gray-700">
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowSettings(false)}
+                  className="flex-1 bg-gray-700 hover:bg-gray-600 text-white px-4 py-3 rounded-xl transition-colors"
+                >
+                  Close
+                </button>
+                <button
+                  onClick={() => {
+                    addNotification('Settings saved successfully!', 'success');
+                    setShowSettings(false);
+                  }}
+                  className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-4 py-3 rounded-xl transition-colors"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Header */}
@@ -482,7 +743,7 @@ export default function Dashboard() {
               icon={Settings} 
               label="Settings" 
               isActive={false} 
-              onClick={() => addNotification('Settings coming soon!', 'info')} 
+              onClick={() => setShowSettings(true)} 
             />
           </div>
         </nav>
@@ -497,6 +758,9 @@ export default function Dashboard() {
       <footer className="text-center text-gray-500 text-sm py-6">
         © 2024 Focus OS • Re-engineering attention for mastery
       </footer>
+
+      {/* Settings Modal */}
+      <SettingsModal />
     </div>
   );
 }
