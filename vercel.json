@@ -1,23 +1,10 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ],
   "functions": {
     "app/**/*.{js,ts}": {
       "maxDuration": 30
     }
   },
   "env": {
-    "NEXT_PUBLIC_APP_URL": "https://focus-os-studyverse.vercel.app"
+    "NEXT_PUBLIC_APP_URL": "https://ai-studyverse.vercel.app"
   }
 }
