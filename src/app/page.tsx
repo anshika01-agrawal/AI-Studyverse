@@ -50,8 +50,8 @@ function NavItem({ icon: Icon, label, isActive, onClick, badge }: NavItemProps) 
       onClick={onClick}
       className={`flex items-center justify-between w-full p-3 rounded-xl transition-all duration-300 text-sm font-medium group ${
         isActive
-          ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-          : 'text-gray-400 hover:bg-blue-800/30 hover:text-white'
+          ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-lg'
+          : 'text-gray-400 hover:bg-gray-800 hover:text-white'
       }`}
     >
       <div className="flex items-center">
@@ -72,9 +72,9 @@ function InsightsCard({ totalFocusTime }: { totalFocusTime: number }) {
   const progress = Math.min(100, (totalFocusTime / weeklyTarget) * 100);
 
   return (
-    <div className="glass-card p-6 rounded-3xl">
+    <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl shadow-2xl">
       <div className="flex items-center space-x-3 mb-6">
-        <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl">
+        <div className="p-3 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl">
           <BarChart3 className="w-6 h-6 text-white" />
         </div>
         <div>
@@ -95,7 +95,7 @@ function InsightsCard({ totalFocusTime }: { totalFocusTime: number }) {
         </div>
         <div className="w-full bg-gray-700 rounded-full h-3">
           <div 
-            className="bg-gradient-to-r from-blue-500 to-indigo-500 h-3 rounded-full transition-all duration-1000"
+            className="bg-gradient-to-r from-teal-500 to-cyan-500 h-3 rounded-full transition-all duration-1000"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
@@ -116,9 +116,9 @@ function InsightsCard({ totalFocusTime }: { totalFocusTime: number }) {
 
 function CommunityCard() {
   return (
-    <div className="glass-card p-6 rounded-3xl">
+    <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl shadow-2xl">
       <div className="flex items-center space-x-3 mb-6">
-        <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl">
+        <div className="p-3 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl">
           <Users className="w-6 h-6 text-white" />
         </div>
         <div>
@@ -158,9 +158,9 @@ function AILearningHub() {
   const [message, setMessage] = useState('');
 
   return (
-    <div className="glass-card p-6 rounded-3xl h-full flex flex-col">
+    <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl h-full flex flex-col shadow-2xl">
       <div className="flex items-center space-x-3 mb-6">
-        <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl">
+        <div className="p-3 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl">
           <Brain className="w-6 h-6 text-white" />
         </div>
         <div>
@@ -193,9 +193,9 @@ function AILearningHub() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Ask about study techniques, upload notes, or request a quiz..."
-          className="flex-grow px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+          className="flex-grow px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-teal-500"
         />
-        <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition duration-300">
+        <button className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white p-3 rounded-xl hover:from-teal-700 hover:to-cyan-700 transition duration-300">
           <MessageSquare className="w-5 h-5" />
         </button>
       </div>
@@ -655,11 +655,11 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-slate-950 to-gray-950 text-white">
       {/* Header */}
-      <header className="glass-card mx-6 mt-6 p-4 rounded-3xl flex justify-between items-center">
+      <header className="bg-gray-900 border border-gray-800 mx-6 mt-6 p-4 rounded-3xl flex justify-between items-center shadow-2xl">
         <div className="flex items-center space-x-4">
-          <div className="p-2 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl">
+          <div className="p-2 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl">
             <Brain className="w-8 h-8 text-white" />
           </div>
           <div>
@@ -683,7 +683,7 @@ export default function Dashboard() {
 
       <div className="flex gap-6 p-6">
         {/* Sidebar Navigation */}
-        <nav className="w-64 glass-card p-4 rounded-3xl self-start">
+        <nav className="w-64 bg-gray-900 border border-gray-800 p-4 rounded-3xl self-start shadow-2xl">
           <div className="space-y-2">
             <NavItem 
               icon={Zap} 
