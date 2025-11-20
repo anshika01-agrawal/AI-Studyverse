@@ -24,12 +24,27 @@
   }
 }
 
-/* Glass morphism - original dark theme preserved */
-.glass-card {
-  @apply backdrop-blur-md bg-gray-800/30 border border-gray-700/50;
+/* Original Focus-specific styles */
+.focus-mode {
+  background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
 }
 
-/* Light theme overrides only */
+.focus-timer {
+  background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+}
+
+/* Original Glass morphism */
+.glass-card {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(31, 41, 55, 0.8);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Light theme overrides */
 :not(.dark) .glass-card {
-  @apply bg-white/90 border-gray-200/50 shadow-lg;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
