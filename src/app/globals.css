@@ -29,7 +29,28 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
+
+  [data-theme="light"] {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 239.3 88.6% 65.5%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 98%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+  }
 
 @layer base {
   * {
@@ -46,8 +67,63 @@
   @apply bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900;
 }
 
+[data-theme="light"] .focus-mode {
+  @apply bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50;
+}
+
 .focus-timer {
   @apply bg-gradient-to-r from-purple-600 to-blue-600;
+}
+
+/* Glass morphism styles */
+.glass-card {
+  @apply backdrop-blur-md bg-gray-800/30 border border-gray-700/50;
+}
+
+[data-theme="light"] .glass-card {
+  @apply backdrop-blur-md bg-white/80 border border-gray-200/50 shadow-lg;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* Light theme overrides */
+[data-theme="light"] {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+[data-theme="light"] .text-white {
+  @apply text-gray-900;
+}
+
+[data-theme="light"] .text-gray-400 {
+  @apply text-gray-600;
+}
+
+[data-theme="light"] .text-gray-300 {
+  @apply text-gray-700;
+}
+
+[data-theme="light"] .bg-gray-900 {
+  @apply bg-white;
+}
+
+[data-theme="light"] .bg-gray-800 {
+  @apply bg-gray-100;
+}
+
+[data-theme="light"] .bg-gray-700 {
+  @apply bg-gray-200;
+}
+
+[data-theme="light"] .border-gray-600 {
+  @apply border-gray-300;
+}
+
+[data-theme="light"] .border-gray-700 {
+  @apply border-gray-200;
 }
 
 .study-room {

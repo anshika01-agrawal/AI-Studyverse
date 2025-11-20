@@ -437,20 +437,39 @@ export default function Dashboard() {
 
   const updateSetting = (key: string, value: any) => {
     setSettings(prev => ({ ...prev, [key]: value }));
+    
+    // Apply theme to document
+    if (key === 'theme') {
+      document.documentElement.setAttribute('data-theme', value);
+    }
+    
     addNotification(`${key} updated successfully!`, 'success');
   };
+
+  // Apply theme on component mount
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', settings.theme);
+  }, [settings.theme]);
 
   const SettingsModal = () => {
     if (!showSettings) return null;
 
     return (
       <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div className="bg-gray-800 rounded-3xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className={`rounded-3xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto transition-all duration-300 ${
+          settings.theme === 'light'
+            ? 'bg-white text-gray-900 shadow-2xl border border-gray-200'
+            : 'bg-gray-800 text-white'
+        }`}>
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-white">Settings</h2>
+            <h2 className={`text-2xl font-bold transition-colors ${settings.theme === 'light' ? 'text-gray-900' : 'text-white'}`}>Settings</h2>
             <button 
               onClick={() => setShowSettings(false)}
-              className="p-2 hover:bg-gray-700 rounded-xl transition-colors"
+              className={`p-2 rounded-xl transition-colors ${
+                settings.theme === 'light' 
+                  ? 'hover:bg-gray-100 text-gray-600' 
+                  : 'hover:bg-gray-700 text-gray-400'
+              }`}
             >
               <X className="w-5 h-5 text-gray-400" />
             </button>
@@ -458,8 +477,10 @@ export default function Dashboard() {
 
           <div className="space-y-6">
             {/* Focus Settings */}
-            <div className="bg-gray-900/50 p-4 rounded-xl">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
+            <div className={`p-4 rounded-xl transition-colors ${settings.theme === 'light' ? 'bg-gray-50' : 'bg-gray-900/50'}`}>
+              <h3 className={`text-lg font-semibold mb-4 flex items-center transition-colors ${
+                settings.theme === 'light' ? 'text-gray-900' : 'text-white'
+              }`}>
                 <Zap className="w-5 h-5 mr-2 text-yellow-400" />
                 Focus Timer Settings
               </h3>
@@ -473,7 +494,11 @@ export default function Dashboard() {
                       max="60"
                       value={settings.focusTime}
                       onChange={(e) => updateSetting('focusTime', parseInt(e.target.value))}
-                      className="w-full px-3 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-indigo-500 focus:outline-none"
+                      className={`w-full px-3 py-2 rounded-lg border focus:outline-none transition-colors ${
+                        settings.theme === 'light'
+                          ? 'bg-white text-gray-900 border-gray-300 focus:border-indigo-500'
+                          : 'bg-gray-700 text-white border-gray-600 focus:border-indigo-500'
+                      }`}
                     />
                   </div>
                   <div>
@@ -531,7 +556,7 @@ export default function Dashboard() {
             </div>
 
             {/* Appearance Settings */}
-            <div className="bg-gray-900/50 p-4 rounded-xl">
+            <div className={`p-4 rounded-xl transition-colors ${settings.theme === 'light' ? 'bg-gray-50' : 'bg-gray-900/50'}`}>
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
                 <Moon className="w-5 h-5 mr-2 text-blue-400" />
                 Appearance
@@ -564,7 +589,7 @@ export default function Dashboard() {
             </div>
 
             {/* Notifications & Sound */}
-            <div className="bg-gray-900/50 p-4 rounded-xl">
+            <div className={`p-4 rounded-xl transition-colors ${settings.theme === 'light' ? 'bg-gray-50' : 'bg-gray-900/50'}`}>
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
                 <Bell className="w-5 h-5 mr-2 text-green-400" />
                 Notifications & Sound
@@ -601,7 +626,7 @@ export default function Dashboard() {
             </div>
 
             {/* Language & Region */}
-            <div className="bg-gray-900/50 p-4 rounded-xl">
+            <div className={`p-4 rounded-xl transition-colors ${settings.theme === 'light' ? 'bg-gray-50' : 'bg-gray-900/50'}`}>
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
                 <Globe className="w-5 h-5 mr-2 text-purple-400" />
                 Language & Region
@@ -625,7 +650,7 @@ export default function Dashboard() {
             </div>
 
             {/* Account & Privacy */}
-            <div className="bg-gray-900/50 p-4 rounded-xl">
+            <div className={`p-4 rounded-xl transition-colors ${settings.theme === 'light' ? 'bg-gray-50' : 'bg-gray-900/50'}`}>
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
                 <Shield className="w-5 h-5 mr-2 text-red-400" />
                 Account & Privacy
@@ -676,7 +701,11 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className={`min-h-screen transition-all duration-500 ${
+      settings.theme === 'light' 
+        ? 'bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-900' 
+        : 'bg-gray-900 text-white'
+    }`}>
       {/* Header */}
       <header className="glass-card mx-6 mt-6 p-4 rounded-3xl flex justify-between items-center">
         <div className="flex items-center space-x-4">
