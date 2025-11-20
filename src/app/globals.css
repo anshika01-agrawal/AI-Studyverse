@@ -77,53 +77,89 @@
 
 /* Glass morphism styles */
 .glass-card {
-  @apply backdrop-blur-md bg-gray-800/30 border border-gray-700/50;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(31, 41, 55, 0.8);
 }
 
-[data-theme="light"] .glass-card {
-  @apply backdrop-blur-md bg-white/80 border border-gray-200/50 shadow-lg;
+.light-theme .glass-card {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Dark theme overrides */
-[data-theme="dark"] {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+/* Text colors for light theme */
+.light-theme .text-white {
+  color: #111827 !important;
 }
 
-/* Light theme overrides */
-[data-theme="light"] {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+.light-theme .text-gray-400 {
+  color: #6b7280 !important;
 }
 
-[data-theme="light"] .text-white {
-  @apply text-gray-900;
+.light-theme .text-gray-300 {
+  color: #374151 !important;
 }
 
-[data-theme="light"] .text-gray-400 {
-  @apply text-gray-600;
+/* Background colors for light theme */
+.light-theme .bg-gray-800 {
+  background-color: #f9fafb !important;
 }
 
-[data-theme="light"] .text-gray-300 {
-  @apply text-gray-700;
+.light-theme .bg-gray-700 {
+  background-color: #f3f4f6 !important;
 }
 
-[data-theme="light"] .bg-gray-900 {
-  @apply bg-white;
+.light-theme .bg-gray-900 {
+  background-color: #ffffff !important;
 }
 
-[data-theme="light"] .bg-gray-800 {
-  @apply bg-gray-100;
+.light-theme .bg-gray-800\/30 {
+  background-color: rgba(243, 244, 246, 0.8) !important;
 }
 
-[data-theme="light"] .bg-gray-700 {
-  @apply bg-gray-200;
+.light-theme .bg-gray-800\/50 {
+  background-color: rgba(243, 244, 246, 0.9) !important;
 }
 
-[data-theme="light"] .border-gray-600 {
-  @apply border-gray-300;
+.light-theme .bg-gray-700\/50 {
+  background-color: rgba(229, 231, 235, 0.9) !important;
 }
 
-[data-theme="light"] .border-gray-700 {
-  @apply border-gray-200;
+/* Border colors for light theme */
+.light-theme .border-gray-600 {
+  border-color: #d1d5db !important;
+}
+
+.light-theme .border-gray-700 {
+  border-color: #e5e7eb !important;
+}
+
+/* Input and form styling for light theme */
+.light-theme input,
+.light-theme select,
+.light-theme textarea {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+.light-theme input::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Hover effects for light theme */
+.light-theme .hover\:bg-gray-700:hover {
+  background-color: #e5e7eb !important;
+}
+
+.light-theme .hover\:bg-gray-600:hover {
+  background-color: #d1d5db !important;
+}
+
+.light-theme .hover\:bg-gray-800:hover {
+  background-color: #f3f4f6 !important;
 }
 
 .study-room {

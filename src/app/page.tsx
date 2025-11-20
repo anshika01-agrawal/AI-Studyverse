@@ -237,6 +237,18 @@ export default function Dashboard() {
     autoStartPomodoros: false
   });
 
+  // Apply theme on mount and changes
+  useEffect(() => {
+    const root = document.documentElement;
+    if (settings.theme === 'light') {
+      root.classList.add('light-theme');
+      root.classList.remove('dark-theme');
+    } else {
+      root.classList.add('dark-theme');
+      root.classList.remove('light-theme');
+    }
+  }, [settings.theme]);
+
   useEffect(() => {
     // Mock user setup
     if (!user) {
@@ -437,30 +449,25 @@ export default function Dashboard() {
 
   const updateSetting = (key: string, value: any) => {
     setSettings(prev => ({ ...prev, [key]: value }));
-    
-    // Apply theme to document
-    if (key === 'theme') {
-      document.documentElement.setAttribute('data-theme', value);
-    }
-    
     addNotification(`${key} updated successfully!`, 'success');
   };
-
-  // Apply theme on component mount
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', settings.theme);
-  }, [settings.theme]);
 
   const SettingsModal = () => {
     if (!showSettings) return null;
 
     return (
       <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div className={`rounded-3xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto transition-all duration-300 ${
-          settings.theme === 'light'
-            ? 'bg-white text-gray-900 shadow-2xl border border-gray-200'
-            : 'bg-gray-800 text-white'
-        }`}>
+        <div 
+          className={`rounded-3xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto transition-all duration-300`}
+          style={{
+            backgroundColor: settings.theme === 'light' ? '#ffffff' : '#1f2937',
+            color: settings.theme === 'light' ? '#1f2937' : '#ffffff',
+            border: `1px solid ${settings.theme === 'light' ? '#e5e7eb' : '#374151'}`,
+            boxShadow: settings.theme === 'light' 
+              ? '0 25px 50px -12px rgba(0, 0, 0, 0.25)' 
+              : '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+          }}
+        >
           <div className="flex justify-between items-center mb-6">
             <h2 className={`text-2xl font-bold transition-colors ${settings.theme === 'light' ? 'text-gray-900' : 'text-white'}`}>Settings</h2>
             <button 
@@ -701,13 +708,29 @@ export default function Dashboard() {
   };
 
   return (
-    <div className={`min-h-screen transition-all duration-500 ${
-      settings.theme === 'light' 
-        ? 'bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-900' 
-        : 'bg-gray-900 text-white'
-    }`}>
+    <div 
+      className={`min-h-screen transition-all duration-500 ${
+        settings.theme === 'light' 
+          ? 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50' 
+          : 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900'
+      }`}
+      style={{
+        color: settings.theme === 'light' ? '#1f2937' : '#ffffff'
+      }}
+    >
       {/* Header */}
-      <header className="glass-card mx-6 mt-6 p-4 rounded-3xl flex justify-between items-center">
+      <header 
+        className="mx-6 mt-6 p-4 rounded-3xl flex justify-between items-center backdrop-blur-md"
+        style={{
+          backgroundColor: settings.theme === 'light' 
+            ? 'rgba(255, 255, 255, 0.9)' 
+            : 'rgba(31, 41, 55, 0.8)',
+          border: `1px solid ${settings.theme === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'}`,
+          boxShadow: settings.theme === 'light' 
+            ? '0 8px 32px rgba(0, 0, 0, 0.1)' 
+            : '0 8px 32px rgba(0, 0, 0, 0.2)'
+        }}
+      >
         <div className="flex items-center space-x-4">
           <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl">
             <Brain className="w-8 h-8 text-white" />
@@ -733,7 +756,18 @@ export default function Dashboard() {
 
       <div className="flex gap-6 p-6">
         {/* Sidebar Navigation */}
-        <nav className="w-64 glass-card p-4 rounded-3xl self-start">
+        <nav 
+          className="w-64 p-4 rounded-3xl self-start backdrop-blur-md"
+          style={{
+            backgroundColor: settings.theme === 'light' 
+              ? 'rgba(255, 255, 255, 0.9)' 
+              : 'rgba(31, 41, 55, 0.8)',
+            border: `1px solid ${settings.theme === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'}`,
+            boxShadow: settings.theme === 'light' 
+              ? '0 8px 32px rgba(0, 0, 0, 0.1)' 
+              : '0 8px 32px rgba(0, 0, 0, 0.2)'
+          }}
+        >
           <div className="space-y-2">
             <NavItem 
               icon={Zap} 
