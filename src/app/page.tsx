@@ -14,7 +14,14 @@ import {
   Zap,
   Trophy,
   Calendar,
-  MessageSquare
+  MessageSquare,
+  X,
+  Moon,
+  Sun,
+  Globe,
+  Shield,
+  User,
+  Database
 } from 'lucide-react';
 import { useAppStore } from '@/store/useAppStore';
 import { FocusTimer } from '@/components/FocusTimer';
@@ -106,7 +113,7 @@ function InsightsCard({ totalFocusTime }: { totalFocusTime: number }) {
           <Trophy className="w-4 h-4 mr-1" />
           <span>7-day streak</span>
         </div>
-        <div className="text-blue-400">
+        <div className="text-teal-400">
           Level 4 • {formatTime(weeklyTarget - totalFocusTime)} to Level 5
         </div>
       </div>
@@ -137,7 +144,7 @@ function CommunityCard() {
             <div className="flex items-center space-x-2">
               <div className="flex -space-x-2">
                 {[...Array(Math.min(room.participants, 3))].map((_, i) => (
-                  <div key={i} className="w-8 h-8 bg-indigo-500 rounded-full border-2 border-gray-800"></div>
+                  <div key={i} className="w-8 h-8 bg-teal-500 rounded-full border-2 border-gray-800"></div>
                 ))}
               </div>
               <div className={`w-3 h-3 rounded-full ${room.isActive ? 'bg-green-400' : 'bg-gray-400'}`}></div>
@@ -146,7 +153,7 @@ function CommunityCard() {
         ))}
       </div>
 
-      <button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition duration-300 flex items-center justify-center space-x-2">
+      <button className="w-full mt-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-semibold py-3 rounded-xl hover:from-teal-700 hover:to-cyan-700 transition duration-300 flex items-center justify-center space-x-2">
         <Plus className="w-4 h-4" />
         <span>Create Study Room</span>
       </button>
@@ -173,7 +180,7 @@ function AILearningHub() {
       <div className="flex-grow bg-gray-800/30 rounded-xl p-4 mb-4 overflow-y-auto">
         <div className="space-y-4">
           <div className="flex items-start space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-full flex items-center justify-center">
               <Brain className="w-4 h-4 text-white" />
             </div>
             <div className="bg-gray-700 rounded-xl rounded-tl-none p-3 max-w-xs">
@@ -233,7 +240,7 @@ export default function Dashboard() {
             </div>
             <div className="space-y-6">
               <CommunityCard />
-              <div className="glass-card p-4 rounded-3xl">
+              <div className="bg-gray-900 border border-gray-800 p-4 rounded-3xl shadow-2xl">
                 <h4 className="font-bold text-white mb-3 flex items-center">
                   <Zap className="w-4 h-4 mr-2 text-yellow-400" />
                   Today's Goals
@@ -262,18 +269,18 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
             <AILearningHub />
             <div className="space-y-6">
-              <div className="glass-card p-6 rounded-3xl">
+              <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl shadow-2xl">
                 <h3 className="text-xl font-bold text-white mb-4">Upload Materials</h3>
                 <div className="border-2 border-dashed border-gray-600 rounded-xl p-8 text-center">
                   <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-400 mb-2">Drop PDFs, images, or text files</p>
-                  <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+                  <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
                     Choose Files
                   </button>
                 </div>
               </div>
               
-              <div className="glass-card p-6 rounded-3xl">
+              <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl shadow-2xl">
                 <h3 className="text-xl font-bold text-white mb-4">Recent Sessions</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-gray-800/50 rounded-xl">
@@ -299,7 +306,7 @@ export default function Dashboard() {
       case 'connect':
         return (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="glass-card p-6 rounded-3xl">
+            <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl shadow-2xl">
               <h3 className="text-xl font-bold text-white mb-6">Active Study Rooms</h3>
               <div className="space-y-4">
                 {mockStudyRooms.filter(room => room.isActive).map((room) => (
@@ -314,7 +321,7 @@ export default function Dashboard() {
                     <div className="flex justify-between items-center">
                       <div className="flex -space-x-2">
                         {[...Array(room.participants)].map((_, i) => (
-                          <div key={i} className="w-8 h-8 bg-indigo-500 rounded-full border-2 border-gray-800"></div>
+                          <div key={i} className="w-8 h-8 bg-teal-500 rounded-full border-2 border-gray-800"></div>
                         ))}
                       </div>
                       <button className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">
@@ -326,7 +333,7 @@ export default function Dashboard() {
               </div>
             </div>
             
-            <div className="glass-card p-6 rounded-3xl">
+            <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl shadow-2xl">
               <h3 className="text-xl font-bold text-white mb-6">Create Study Room</h3>
               <div className="space-y-4">
                 <input
@@ -344,7 +351,7 @@ export default function Dashboard() {
                   <option>Max 4 participants</option>
                   <option>Max 6 participants</option>
                 </select>
-                <button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition duration-300">
+                <button className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-semibold py-3 rounded-xl hover:from-teal-700 hover:to-cyan-700 transition duration-300">
                   Create Room
                 </button>
               </div>
@@ -362,10 +369,10 @@ export default function Dashboard() {
 
       case 'goals':
         return (
-          <div className="glass-card p-6 rounded-3xl">
+          <div className="bg-gray-900 border border-gray-800 p-6 rounded-3xl shadow-2xl">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-2xl font-bold text-white">Study Goals</h3>
-              <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition duration-300 flex items-center space-x-2">
+              <button className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-xl hover:from-teal-700 hover:to-cyan-700 transition duration-300 flex items-center space-x-2">
                 <Plus className="w-4 h-4" />
                 <span>New Goal</span>
               </button>
@@ -381,7 +388,7 @@ export default function Dashboard() {
                 <div key={index} className="bg-gray-800/50 p-6 rounded-xl">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="font-semibold text-white">{goal.title}</h4>
-                    <Target className="w-5 h-5 text-indigo-400" />
+                    <Target className="w-5 h-5 text-teal-400" />
                   </div>
                   <div className="mb-4">
                     <div className="flex justify-between text-sm text-gray-400 mb-2">
@@ -390,7 +397,7 @@ export default function Dashboard() {
                     </div>
                     <div className="w-full bg-gray-700 rounded-full h-2">
                       <div 
-                        className="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full"
+                        className="bg-gradient-to-r from-teal-500 to-cyan-500 h-2 rounded-full"
                         style={{ width: `${goal.progress}%` }}
                       ></div>
                     </div>
@@ -399,7 +406,7 @@ export default function Dashboard() {
                     <button className="flex-1 bg-gray-700 text-white py-2 px-3 rounded-lg text-sm hover:bg-gray-600 transition-colors">
                       View
                     </button>
-                    <button className="flex-1 bg-indigo-600 text-white py-2 px-3 rounded-lg text-sm hover:bg-indigo-700 transition-colors">
+                    <button className="flex-1 bg-teal-600 text-white py-2 px-3 rounded-lg text-sm hover:bg-teal-700 transition-colors">
                       Update
                     </button>
                   </div>
@@ -415,243 +422,7 @@ export default function Dashboard() {
   };
 
   const updateSetting = (key: string, value: any) => {
-    setSettings(prev => ({ ...prev, [key]: value }));
     addNotification(`${key} updated successfully!`, 'success');
-  };
-
-  const SettingsModal = () => {
-    if (!showSettings) return null;
-
-    return (
-      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div className="bg-slate-900/95 backdrop-blur-xl border border-blue-800/50 rounded-3xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto transition-all duration-300 shadow-2xl">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-white">Settings</h2>
-            <button 
-              onClick={() => setShowSettings(false)}
-              className="p-2 hover:bg-blue-800/30 rounded-xl transition-colors text-gray-400"
-            >
-              <X className="w-5 h-5 text-gray-400" />
-            </button>
-          </div>
-
-          <div className="space-y-6">
-            {/* Focus Settings */}
-            <div className="bg-slate-800/60 border border-blue-900/30 p-4 rounded-xl transition-colors">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                <Zap className="w-5 h-5 mr-2 text-yellow-400" />
-                Focus Timer Settings
-              </h3>
-              <div className="space-y-4">
-                <div className="grid grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-sm text-gray-400 mb-2">Focus Time (minutes)</label>
-                    <input
-                      type="number"
-                      min="5"
-                      max="60"
-                      value={settings.focusTime}
-                      onChange={(e) => updateSetting('focusTime', parseInt(e.target.value))}
-                      className="w-full px-3 py-2 bg-slate-800 text-white rounded-lg border border-blue-800/50 focus:border-blue-500 focus:outline-none transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm text-gray-400 mb-2">Short Break (minutes)</label>
-                    <input
-                      type="number"
-                      min="1"
-                      max="30"
-                      value={settings.breakTime}
-                      onChange={(e) => updateSetting('breakTime', parseInt(e.target.value))}
-                      className="w-full px-3 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-indigo-500 focus:outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm text-gray-400 mb-2">Long Break (minutes)</label>
-                    <input
-                      type="number"
-                      min="5"
-                      max="60"
-                      value={settings.longBreakTime}
-                      onChange={(e) => updateSetting('longBreakTime', parseInt(e.target.value))}
-                      className="w-full px-3 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-indigo-500 focus:outline-none"
-                    />
-                  </div>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Auto-start breaks</span>
-                  <button
-                    onClick={() => updateSetting('autoStartBreaks', !settings.autoStartBreaks)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      settings.autoStartBreaks ? 'bg-indigo-600' : 'bg-gray-600'
-                    }`}
-                  >
-                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      settings.autoStartBreaks ? 'translate-x-6' : 'translate-x-1'
-                    }`} />
-                  </button>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Auto-start pomodoros</span>
-                  <button
-                    onClick={() => updateSetting('autoStartPomodoros', !settings.autoStartPomodoros)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      settings.autoStartPomodoros ? 'bg-indigo-600' : 'bg-gray-600'
-                    }`}
-                  >
-                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      settings.autoStartPomodoros ? 'translate-x-6' : 'translate-x-1'
-                    }`} />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Appearance Settings */}
-            <div className={`p-4 rounded-xl transition-colors ${settings.theme === 'light' ? 'bg-gray-50' : 'bg-gray-900/50'}`}>
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                <Moon className="w-5 h-5 mr-2 text-blue-400" />
-                Appearance
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Theme</span>
-                  <div className="flex bg-gray-700 rounded-lg p-1">
-                    <button
-                      onClick={() => updateSetting('theme', 'dark')}
-                      className={`px-3 py-1 rounded-md flex items-center transition-colors ${
-                        settings.theme === 'dark' ? 'bg-indigo-600 text-white' : 'text-gray-400'
-                      }`}
-                    >
-                      <Moon className="w-4 h-4 mr-1" />
-                      Dark
-                    </button>
-                    <button
-                      onClick={() => updateSetting('theme', 'light')}
-                      className={`px-3 py-1 rounded-md flex items-center transition-colors ${
-                        settings.theme === 'light' ? 'bg-indigo-600 text-white' : 'text-gray-400'
-                      }`}
-                    >
-                      <Sun className="w-4 h-4 mr-1" />
-                      Light
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Notifications & Sound */}
-            <div className={`p-4 rounded-xl transition-colors ${settings.theme === 'light' ? 'bg-gray-50' : 'bg-gray-900/50'}`}>
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                <Bell className="w-5 h-5 mr-2 text-green-400" />
-                Notifications & Sound
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Push notifications</span>
-                  <button
-                    onClick={() => updateSetting('notifications', !settings.notifications)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      settings.notifications ? 'bg-indigo-600' : 'bg-gray-600'
-                    }`}
-                  >
-                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      settings.notifications ? 'translate-x-6' : 'translate-x-1'
-                    }`} />
-                  </button>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-300">Sound effects</span>
-                  <button
-                    onClick={() => updateSetting('sounds', !settings.sounds)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      settings.sounds ? 'bg-indigo-600' : 'bg-gray-600'
-                    }`}
-                  >
-                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      settings.sounds ? 'translate-x-6' : 'translate-x-1'
-                    }`} />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Language & Region */}
-            <div className={`p-4 rounded-xl transition-colors ${settings.theme === 'light' ? 'bg-gray-50' : 'bg-gray-900/50'}`}>
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                <Globe className="w-5 h-5 mr-2 text-purple-400" />
-                Language & Region
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm text-gray-400 mb-2">Language</label>
-                  <select
-                    value={settings.language}
-                    onChange={(e) => updateSetting('language', e.target.value)}
-                    className="w-full px-3 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-indigo-500 focus:outline-none"
-                  >
-                    <option value="en">English</option>
-                    <option value="hi">हिंदी (Hindi)</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            {/* Account & Privacy */}
-            <div className={`p-4 rounded-xl transition-colors ${settings.theme === 'light' ? 'bg-gray-50' : 'bg-gray-900/50'}`}>
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                <Shield className="w-5 h-5 mr-2 text-red-400" />
-                Account & Privacy
-              </h3>
-              <div className="space-y-3">
-                <button className="w-full text-left px-4 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-gray-300">
-                  <div className="flex items-center">
-                    <User className="w-4 h-4 mr-3" />
-                    <span>Edit Profile</span>
-                  </div>
-                </button>
-                <button className="w-full text-left px-4 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-gray-300">
-                  <div className="flex items-center">
-                    <Database className="w-4 h-4 mr-3" />
-                    <span>Export Data</span>
-                  </div>
-                </button>
-                <button className="w-full text-left px-4 py-3 bg-red-900/30 hover:bg-red-900/50 rounded-lg transition-colors text-red-300">
-                  <span>Delete Account</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Save Button */}
-            <div className="pt-4 border-t border-gray-700">
-              <div className="flex gap-3">
-                <button
-                  onClick={() => setShowSettings(false)}
-                  className="flex-1 bg-gray-700 hover:bg-gray-600 text-white px-4 py-3 rounded-xl transition-colors"
-                >
-                  Close
-                </button>
-                <button
-                  onClick={() => {
-                    addNotification('Settings saved successfully!', 'success');
-                    setShowSettings(false);
-                  }}
-                  className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-4 py-3 rounded-xl transition-colors"
-                >
-                  Save Changes
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
   };
 
   return (
