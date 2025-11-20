@@ -193,7 +193,7 @@ function AILearningHub() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Ask about study techniques, upload notes, or request a quiz..."
-          className="flex-grow px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
+          className="flex-grow px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
         />
         <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition duration-300">
           <MessageSquare className="w-5 h-5" />
@@ -344,7 +344,7 @@ export default function Dashboard() {
                   <option>Max 4 participants</option>
                   <option>Max 6 participants</option>
                 </select>
-                <button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-3 rounded-xl hover:from-purple-700 hover:to-pink-700 transition duration-300">
+                <button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition duration-300">
                   Create Room
                 </button>
               </div>
@@ -424,12 +424,12 @@ export default function Dashboard() {
 
     return (
       <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto transition-all duration-300 shadow-2xl border border-gray-200 dark:border-gray-700">
+        <div className="bg-slate-900/95 backdrop-blur-xl border border-blue-800/50 rounded-3xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto transition-all duration-300 shadow-2xl">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Settings</h2>
+            <h2 className="text-2xl font-bold text-white">Settings</h2>
             <button 
               onClick={() => setShowSettings(false)}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors text-gray-600 dark:text-gray-400"
+              className="p-2 hover:bg-blue-800/30 rounded-xl transition-colors text-gray-400"
             >
               <X className="w-5 h-5 text-gray-400" />
             </button>
@@ -437,8 +437,8 @@ export default function Dashboard() {
 
           <div className="space-y-6">
             {/* Focus Settings */}
-            <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-xl transition-colors">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+            <div className="bg-slate-800/60 border border-blue-900/30 p-4 rounded-xl transition-colors">
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
                 <Zap className="w-5 h-5 mr-2 text-yellow-400" />
                 Focus Timer Settings
               </h3>
@@ -452,7 +452,7 @@ export default function Dashboard() {
                       max="60"
                       value={settings.focusTime}
                       onChange={(e) => updateSetting('focusTime', parseInt(e.target.value))}
-                      className="w-full px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:border-indigo-500 focus:outline-none transition-colors"
+                      className="w-full px-3 py-2 bg-slate-800 text-white rounded-lg border border-blue-800/50 focus:border-blue-500 focus:outline-none transition-colors"
                     />
                   </div>
                   <div>

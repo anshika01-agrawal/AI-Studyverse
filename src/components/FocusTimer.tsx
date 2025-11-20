@@ -122,7 +122,7 @@ export function FocusTimer({ className = '' }: FocusTimerProps) {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center space-x-3">
-          <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl">
+          <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl">
             <Brain className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -184,7 +184,7 @@ export function FocusTimer({ className = '' }: FocusTimerProps) {
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
             placeholder="e.g., Advanced Calculus, React Components, Spanish Grammar"
-            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+            className="w-full px-4 py-3 bg-slate-800 border border-blue-800/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
           />
         </div>
       )}
@@ -200,7 +200,7 @@ export function FocusTimer({ className = '' }: FocusTimerProps) {
             onChange={(e) => setSessionNotes(e.target.value)}
             placeholder="Jot down key insights, difficulties, or breakthroughs..."
             rows={3}
-            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 resize-none"
+            className="w-full px-4 py-3 bg-slate-800 border border-blue-800/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 resize-none"
           />
         </div>
       )}
@@ -211,7 +211,7 @@ export function FocusTimer({ className = '' }: FocusTimerProps) {
           <button
             onClick={handleStartSession}
             disabled={!subject.trim()}
-            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-4 px-6 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed focus-glow"
+            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-4 px-6 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed focus-glow"
           >
             <Play className="w-5 h-5" />
             <span>Start Deep Work Session</span>
