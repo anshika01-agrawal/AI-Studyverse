@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 239.3 88.6% 65.5%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Focus-specific styles */
+.focus-mode {
+  @apply bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900;
+}
+
+.focus-timer {
+  @apply bg-gradient-to-r from-purple-600 to-blue-600;
+}
+
+.study-room {
+  @apply bg-gradient-to-r from-green-600 to-teal-600;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s infinite;
+}
+
+/* Glass morphism effect */
+.glass {
+  @apply bg-white/10 backdrop-blur-lg border border-white/20;
+}
+
+/* Study mode specific styles */
+.study-focus {
+  filter: grayscale(20%) contrast(110%) brightness(95%);
+}
+
+/* Progress ring animation */
+@keyframes progress {
+  from {
+    stroke-dasharray: 0 283;
+  }
+}
+
+.progress-ring {
+  animation: progress 1s ease-out forwards;
+}
+
+/* Focus streak effects */
+.streak-glow {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+/* Notification styles */
+.notification-enter {
+  @apply transform translate-x-full;
+}
+
+.notification-enter-active {
+  @apply transform translate-x-0 transition-transform duration-300 ease-out;
+}
+
+.notification-exit {
+  @apply transform translate-x-0;
+}
+
+.notification-exit-active {
+  @apply transform translate-x-full transition-transform duration-300 ease-in;
+}
