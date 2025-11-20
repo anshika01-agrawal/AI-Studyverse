@@ -24,15 +24,12 @@
   }
 }
 
-/* Glass morphism - responsive to dark mode */
+/* Glass morphism - original dark theme preserved */
 .glass-card {
   @apply backdrop-blur-md bg-gray-800/30 border border-gray-700/50;
 }
 
-.dark .glass-card {
-  @apply bg-gray-800/30 border-gray-700/50;
-}
-
+/* Light theme overrides only */
 :not(.dark) .glass-card {
   @apply bg-white/90 border-gray-200/50 shadow-lg;
 }

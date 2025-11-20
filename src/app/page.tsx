@@ -60,7 +60,7 @@ function NavItem({ icon: Icon, label, isActive, onClick, badge }: NavItemProps) 
       className={`flex items-center justify-between w-full p-3 rounded-xl transition-all duration-300 text-sm font-medium group ${
         isActive
           ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
-          : 'text-gray-400 hover:bg-gray-800 hover:text-white'
+          : 'text-gray-400 hover:bg-gray-800 dark:hover:bg-gray-700 hover:text-white'
       }`}
     >
       <div className="flex items-center">
@@ -692,7 +692,7 @@ export default function Dashboard() {
       className={`min-h-screen transition-all duration-500 ${
         settings.theme === 'light' 
           ? 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 text-gray-900' 
-          : 'dark bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white'
+          : 'dark bg-gray-900 text-white'
       }`}
     >
       {/* Header */}
