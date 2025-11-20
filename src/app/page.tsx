@@ -457,26 +457,12 @@ export default function Dashboard() {
 
     return (
       <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div 
-          className={`rounded-3xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto transition-all duration-300`}
-          style={{
-            backgroundColor: settings.theme === 'light' ? '#ffffff' : '#1f2937',
-            color: settings.theme === 'light' ? '#1f2937' : '#ffffff',
-            border: `1px solid ${settings.theme === 'light' ? '#e5e7eb' : '#374151'}`,
-            boxShadow: settings.theme === 'light' 
-              ? '0 25px 50px -12px rgba(0, 0, 0, 0.25)' 
-              : '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-          }}
-        >
+        <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto transition-all duration-300 shadow-2xl border border-gray-200 dark:border-gray-700">
           <div className="flex justify-between items-center mb-6">
-            <h2 className={`text-2xl font-bold transition-colors ${settings.theme === 'light' ? 'text-gray-900' : 'text-white'}`}>Settings</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Settings</h2>
             <button 
               onClick={() => setShowSettings(false)}
-              className={`p-2 rounded-xl transition-colors ${
-                settings.theme === 'light' 
-                  ? 'hover:bg-gray-100 text-gray-600' 
-                  : 'hover:bg-gray-700 text-gray-400'
-              }`}
+              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors text-gray-600 dark:text-gray-400"
             >
               <X className="w-5 h-5 text-gray-400" />
             </button>
@@ -484,10 +470,8 @@ export default function Dashboard() {
 
           <div className="space-y-6">
             {/* Focus Settings */}
-            <div className={`p-4 rounded-xl transition-colors ${settings.theme === 'light' ? 'bg-gray-50' : 'bg-gray-900/50'}`}>
-              <h3 className={`text-lg font-semibold mb-4 flex items-center transition-colors ${
-                settings.theme === 'light' ? 'text-gray-900' : 'text-white'
-              }`}>
+            <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-xl transition-colors">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
                 <Zap className="w-5 h-5 mr-2 text-yellow-400" />
                 Focus Timer Settings
               </h3>
@@ -501,11 +485,7 @@ export default function Dashboard() {
                       max="60"
                       value={settings.focusTime}
                       onChange={(e) => updateSetting('focusTime', parseInt(e.target.value))}
-                      className={`w-full px-3 py-2 rounded-lg border focus:outline-none transition-colors ${
-                        settings.theme === 'light'
-                          ? 'bg-white text-gray-900 border-gray-300 focus:border-indigo-500'
-                          : 'bg-gray-700 text-white border-gray-600 focus:border-indigo-500'
-                      }`}
+                      className="w-full px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:border-indigo-500 focus:outline-none transition-colors"
                     />
                   </div>
                   <div>
@@ -711,26 +691,12 @@ export default function Dashboard() {
     <div 
       className={`min-h-screen transition-all duration-500 ${
         settings.theme === 'light' 
-          ? 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50' 
-          : 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900'
+          ? 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 text-gray-900' 
+          : 'dark bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white'
       }`}
-      style={{
-        color: settings.theme === 'light' ? '#1f2937' : '#ffffff'
-      }}
     >
       {/* Header */}
-      <header 
-        className="mx-6 mt-6 p-4 rounded-3xl flex justify-between items-center backdrop-blur-md"
-        style={{
-          backgroundColor: settings.theme === 'light' 
-            ? 'rgba(255, 255, 255, 0.9)' 
-            : 'rgba(31, 41, 55, 0.8)',
-          border: `1px solid ${settings.theme === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'}`,
-          boxShadow: settings.theme === 'light' 
-            ? '0 8px 32px rgba(0, 0, 0, 0.1)' 
-            : '0 8px 32px rgba(0, 0, 0, 0.2)'
-        }}
-      >
+      <header className="glass-card mx-6 mt-6 p-4 rounded-3xl flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl">
             <Brain className="w-8 h-8 text-white" />
@@ -756,18 +722,7 @@ export default function Dashboard() {
 
       <div className="flex gap-6 p-6">
         {/* Sidebar Navigation */}
-        <nav 
-          className="w-64 p-4 rounded-3xl self-start backdrop-blur-md"
-          style={{
-            backgroundColor: settings.theme === 'light' 
-              ? 'rgba(255, 255, 255, 0.9)' 
-              : 'rgba(31, 41, 55, 0.8)',
-            border: `1px solid ${settings.theme === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'}`,
-            boxShadow: settings.theme === 'light' 
-              ? '0 8px 32px rgba(0, 0, 0, 0.1)' 
-              : '0 8px 32px rgba(0, 0, 0, 0.2)'
-          }}
-        >
+        <nav className="w-64 glass-card p-4 rounded-3xl self-start">
           <div className="space-y-2">
             <NavItem 
               icon={Zap} 

@@ -24,65 +24,15 @@
   }
 }
 
-/* Glass morphism */
+/* Glass morphism - responsive to dark mode */
 .glass-card {
   @apply backdrop-blur-md bg-gray-800/30 border border-gray-700/50;
 }
 
-/* Light theme overrides */
-.light-theme .glass-card {
+.dark .glass-card {
+  @apply bg-gray-800/30 border-gray-700/50;
+}
+
+:not(.dark) .glass-card {
   @apply bg-white/90 border-gray-200/50 shadow-lg;
-}
-
-.light-theme .text-white {
-  @apply text-gray-900;
-}
-
-.light-theme .text-gray-400 {
-  @apply text-gray-600;
-}
-
-.light-theme .text-gray-300 {
-  @apply text-gray-700;
-}
-
-.light-theme .bg-gray-900 {
-  @apply bg-white;
-}
-
-.light-theme .bg-gray-800 {
-  @apply bg-gray-100;
-}
-
-.light-theme .bg-gray-700 {
-  @apply bg-gray-200;
-}
-
-.light-theme .border-gray-600 {
-  @apply border-gray-300;
-}
-
-.light-theme .border-gray-700 {
-  @apply border-gray-200;
-}
-
-.light-theme input,
-.light-theme select {
-  @apply bg-white text-gray-900 border-gray-300;
-}
-
-.light-theme input::placeholder {
-  @apply text-gray-500;
-}
-
-.light-theme .hover\:bg-gray-700:hover {
-  @apply bg-gray-200;
-}
-
-.light-theme .hover\:bg-gray-600:hover {
-  @apply bg-gray-300;
-}
-
-.light-theme .hover\:bg-gray-800:hover {
-  @apply bg-gray-100;
 }
