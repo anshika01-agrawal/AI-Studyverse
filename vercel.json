@@ -4,7 +4,13 @@
       "maxDuration": 30
     }
   },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
   "env": {
-    "NEXT_PUBLIC_APP_URL": "https://ai-studyverse.vercel.app"
+    "NEXT_PUBLIC_APP_URL": "https://ai-studyverse-flame.vercel.app"
   }
 }

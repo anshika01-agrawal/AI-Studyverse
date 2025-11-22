@@ -31,8 +31,8 @@ interface AppStore {
   updateGoal: (goalId: string, updates: Partial<Goal>) => void;
   
   // App state
-  activeView: 'focus' | 'learn' | 'connect' | 'insights' | 'goals';
-  setActiveView: (view: 'focus' | 'learn' | 'connect' | 'insights' | 'goals') => void;
+  activeView: 'focus' | 'learn' | 'connect' | 'insights' | 'goals' | 'settings';
+  setActiveView: (view: 'focus' | 'learn' | 'connect' | 'insights' | 'goals' | 'settings') => void;
   notifications: Array<{ id: string; message: string; type: 'success' | 'error' | 'info' }>;
   addNotification: (message: string, type: 'success' | 'error' | 'info') => void;
   removeNotification: (id: string) => void;

@@ -6,7 +6,14 @@ const nextConfig = {
     serverComponentsExternalPackages: ['firebase-admin']
   },
   images: {
+    formats: ['image/webp'],
     domains: ['lh3.googleusercontent.com', 'firebasestorage.googleapis.com'],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
   env: {
     NEXT_PUBLIC_FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,

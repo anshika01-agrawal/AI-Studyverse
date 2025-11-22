@@ -2,55 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 239.3 88.6% 65.5%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
+/* Deep Dark Theme Styles */
+body {
+  background: black;
+  color: white;
+  font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-}
-
-/* Focus-specific styles - Navy Blue Theme */
-.focus-mode {
-  @apply bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900;
-}
-
-.focus-timer {
-  @apply bg-gradient-to-r from-blue-600 to-indigo-600;
-}
-
-/* Glass morphism - Navy Blue */
+/* Glass morphism - Deep Dark Theme */
 .glass-card {
-  @apply backdrop-blur-md bg-blue-900/20 border border-blue-700/30;
+  background: rgba(17, 24, 39, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+.focus-glow {
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
+}
+
+.study-timer {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+}
+
+.ai-gradient {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 50%, #06b6d4 100%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0d9488;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0f766e;
 }

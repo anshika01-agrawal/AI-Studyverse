@@ -7,7 +7,7 @@ import { demoLeaderboard } from '../data/demoData';
 
 interface User {
   id: string;
-  name: string;
+  displayName?: string;
   totalFocusTime: number;
   streak: number;
   level: number;
@@ -53,11 +53,11 @@ export function Leaderboard({ users, currentUserId, className = '' }: Leaderboar
   };
 
   return (
-    <div className={`glass-card p-6 rounded-3xl ${className}`}>
+    <div className={`bg-gray-900 p-6 rounded-2xl ${className}`}>
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-3">
-          <div className="p-3 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl">
+          <div className="p-3 bg-blue-600 rounded-xl">
             <Trophy className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -93,14 +93,14 @@ export function Leaderboard({ users, currentUserId, className = '' }: Leaderboar
 
               {/* Avatar */}
               <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4 ${generateAvatarColor(user.id)}`}>
-                {getInitials(user.name)}
+                {getInitials(user.displayName || 'User')}
               </div>
 
               {/* User Info */}
               <div className="flex-grow min-w-0">
                 <div className="flex items-center space-x-2">
                   <h4 className={`font-semibold truncate ${isCurrentUser ? 'text-indigo-300' : 'text-white'}`}>
-                    {user.name}
+                    {user.displayName || 'User'}
                     {isCurrentUser && <span className="ml-2 text-xs bg-indigo-500 px-2 py-1 rounded">You</span>}
                   </h4>
                   <div className="flex items-center space-x-1">
@@ -154,11 +154,11 @@ export function Leaderboard({ users, currentUserId, className = '' }: Leaderboar
                   </div>
                 </div>
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4 ${generateAvatarColor(currentUser.id)}`}>
-                  {getInitials(currentUser.name)}
+                  {getInitials(currentUser.displayName || 'User')}
                 </div>
                 <div className="flex-grow">
                   <h4 className="font-semibold text-indigo-300 flex items-center">
-                    {currentUser.name}
+                    {currentUser.displayName || 'User'}
                     <span className="ml-2 text-xs bg-indigo-500 px-2 py-1 rounded">You</span>
                   </h4>
                   <div className="flex items-center space-x-4 mt-1">

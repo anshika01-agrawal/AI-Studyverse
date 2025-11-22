@@ -118,11 +118,11 @@ export function FocusTimer({ className = '' }: FocusTimerProps) {
   };
 
   return (
-    <div className={`bg-gray-900 border border-gray-800 p-8 rounded-3xl shadow-2xl ${className}`}>
+    <div className={`bg-gray-900 p-8 rounded-2xl ${className}`}>
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center space-x-3">
-          <div className="p-3 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl">
+          <div className="p-3 bg-blue-600 rounded-xl">
             <Brain className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -157,7 +157,7 @@ export function FocusTimer({ className = '' }: FocusTimerProps) {
       {/* Focus Score */}
       {isStudying && !isBreakTime && (
         <div className="flex items-center justify-center mb-8">
-          <div className="glass-card p-6 rounded-xl flex items-center space-x-4">
+          <div className="bg-gray-800/50 p-6 rounded-xl flex items-center space-x-4">
             <div className="flex flex-col items-center">
               <Sparkles className="w-8 h-8 text-purple-400 mb-2" />
               <span className="text-sm text-gray-300">AI Focus Score</span>
@@ -211,7 +211,7 @@ export function FocusTimer({ className = '' }: FocusTimerProps) {
           <button
             onClick={handleStartSession}
             disabled={!subject.trim()}
-            className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-semibold py-4 px-6 rounded-xl hover:from-teal-700 hover:to-cyan-700 transition duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed focus-glow"
+            className="w-full bg-blue-600 text-white font-semibold py-4 px-6 rounded-xl hover:bg-blue-700 transition duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Play className="w-5 h-5" />
             <span>Start Deep Work Session</span>

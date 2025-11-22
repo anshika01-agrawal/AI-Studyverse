@@ -1,73 +1,60 @@
 // Demo data for the Focus OS platform
 export const demoUser = {
   id: 'demo-user-1',
-  name: 'Alex Chen',
   email: 'alex@demo.com',
-  avatar: '/api/placeholder/40/40',
-  totalFocusTime: 12450, // in minutes
+  displayName: 'Alex Chen',
+  photoURL: '/api/placeholder/40/40',
+  totalFocusTime: 12450, // in seconds
   streak: 7,
   level: 12,
-  badges: ['Deep Focus Master', 'Study Streak Champion'],
-  joinDate: '2024-01-15',
-  preferences: {
-    pomodoroLength: 25,
-    shortBreak: 5,
-    longBreak: 15,
-    notifications: true,
-    theme: 'dark'
-  }
+  achievements: ['Deep Focus Master', 'Study Streak Champion']
 };
 
 export const demoLeaderboard = [
   {
     id: '1',
-    name: 'Sarah Kim',
-    avatar: '/api/placeholder/40/40',
+    displayName: 'Sarah Kim',
+    photoURL: '/api/placeholder/40/40',
     totalFocusTime: 18720,
     streak: 12,
     level: 18,
-    badges: ['Study Legend', 'Focus Master'],
-    rank: 1
+    achievements: ['Study Legend', 'Focus Master']
   },
   {
     id: '2', 
-    name: 'Alex Chen',
-    avatar: '/api/placeholder/40/40',
+    displayName: 'Alex Chen',
+    photoURL: '/api/placeholder/40/40',
     totalFocusTime: 12450,
     streak: 7,
     level: 12,
-    badges: ['Deep Focus Master'],
-    rank: 2
+    achievements: ['Deep Focus Master']
   },
   {
     id: '3',
-    name: 'Marcus Johnson',
-    avatar: '/api/placeholder/40/40', 
+    displayName: 'Marcus Johnson',
+    photoURL: '/api/placeholder/40/40', 
     totalFocusTime: 9840,
     streak: 5,
     level: 9,
-    badges: ['Consistency King'],
-    rank: 3
+    achievements: ['Consistency King']
   },
   {
     id: '4',
-    name: 'Emma Thompson',
-    avatar: '/api/placeholder/40/40',
+    displayName: 'Emma Thompson',
+    photoURL: '/api/placeholder/40/40',
     totalFocusTime: 8520,
     streak: 9,
     level: 11,
-    badges: ['Study Warrior'],
-    rank: 4
+    achievements: ['Study Warrior']
   },
   {
     id: '5',
-    name: 'David Park',
-    avatar: '/api/placeholder/40/40',
+    displayName: 'David Park',
+    photoURL: '/api/placeholder/40/40',
     totalFocusTime: 7200,
     streak: 3,
     level: 8,
-    badges: ['Rising Star'],
-    rank: 5
+    achievements: ['Rising Star']
   }
 ];
 
@@ -76,54 +63,71 @@ export const demoStudyRooms = [
     id: 'room-1',
     name: 'CS Study Group',
     subject: 'Computer Science',
-    participants: 12,
+    participants: [],
     maxParticipants: 20,
     isActive: true,
-    description: 'Studying algorithms and data structures',
-    tags: ['Programming', 'Algorithms', 'Interview Prep']
+    createdBy: 'demo-user-1',
+    createdAt: new Date('2024-01-15'),
+    settings: {
+      allowChat: true,
+      focusMode: true,
+      breakInterval: 25
+    }
   },
   {
     id: 'room-2', 
     name: 'Math Warriors',
     subject: 'Mathematics',
-    participants: 8,
+    participants: [],
     maxParticipants: 15,
     isActive: true,
-    description: 'Calculus and linear algebra focus session',
-    tags: ['Calculus', 'Linear Algebra', 'Problem Solving']
+    createdBy: 'demo-user-2',
+    createdAt: new Date('2024-01-15'),
+    settings: {
+      allowChat: true,
+      focusMode: true,
+      breakInterval: 30
+    }
   },
   {
     id: 'room-3',
     name: 'Med School Prep',
     subject: 'Medicine',
-    participants: 15,
+    participants: [],
     maxParticipants: 25,
     isActive: false,
-    description: 'MCAT preparation and biology review',
-    tags: ['Biology', 'Chemistry', 'MCAT']
+    createdBy: 'demo-user-3',
+    createdAt: new Date('2024-01-15'),
+    settings: {
+      allowChat: true,
+      focusMode: false,
+      breakInterval: 25
+    }
   }
 ];
 
 export const demoGoals = [
   {
     id: 'goal-1',
+    userId: 'demo-user-1',
     title: 'Complete React Course',
     description: 'Finish the Advanced React course by end of month',
     targetHours: 40,
-    completedHours: 28,
-    deadline: '2024-12-31',
-    priority: 'high',
-    category: 'Programming'
+    currentHours: 28,
+    deadline: new Date('2024-12-31'),
+    isCompleted: false,
+    category: 'skill' as const
   },
   {
     id: 'goal-2',
+    userId: 'demo-user-1',
     title: 'Daily Focus Sessions',
     description: 'Maintain 2+ hours of focused study daily',
     targetHours: 60,
-    completedHours: 42,
-    deadline: '2024-12-31', 
-    priority: 'medium',
-    category: 'Habits'
+    currentHours: 42,
+    deadline: new Date('2024-12-31'), 
+    isCompleted: false,
+    category: 'habit' as const
   }
 ];
 
