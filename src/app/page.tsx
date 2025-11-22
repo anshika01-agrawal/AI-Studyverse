@@ -60,7 +60,7 @@ function NavItem({ icon: Icon, label, isActive, onClick, badge }: NavItemProps) 
       onClick={onClick}
       className={`flex items-center justify-between w-full p-3 rounded-xl transition-all duration-300 text-sm font-medium group ${
         isActive
-          ? 'bg-blue-600 text-white'
+          ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white'
           : 'text-gray-400 hover:bg-gray-800 hover:text-white'
       }`}
     >
@@ -84,7 +84,7 @@ function InsightsCard({ totalFocusTime }: { totalFocusTime: number }) {
   return (
     <div className="bg-gray-900 p-6 rounded-2xl">
       <div className="flex items-center space-x-3 mb-6">
-        <div className="p-3 bg-blue-600 rounded-xl">
+        <div className="p-3 bg-teal-600 rounded-xl">
           <BarChart3 className="w-6 h-6 text-white" />
         </div>
         <div>
@@ -104,8 +104,8 @@ function InsightsCard({ totalFocusTime }: { totalFocusTime: number }) {
           <span>Target: 30:00:00</span>
         </div>
         <div className="w-full bg-gray-700 rounded-full h-3">
-          <div 
-            className="bg-blue-600 h-3 rounded-full transition-all duration-1000"
+          <div
+            className="bg-teal-600 h-3 rounded-full transition-all duration-1000"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
@@ -128,7 +128,7 @@ function CommunityCard() {
   return (
     <div className="bg-gray-900 p-6 rounded-2xl">
       <div className="flex items-center space-x-3 mb-6">
-        <div className="p-3 bg-blue-600 rounded-xl">
+        <div className="p-3 bg-teal-600 rounded-xl">
           <Users className="w-6 h-6 text-white" />
         </div>
         <div>
@@ -147,7 +147,7 @@ function CommunityCard() {
             <div className="flex items-center space-x-2">
               <div className="flex -space-x-2">
                 {[...Array(Math.min(room.participants, 3))].map((_, i) => (
-                  <div key={i} className="w-8 h-8 bg-blue-500 rounded-full border-2 border-gray-800"></div>
+                  <div key={i} className="w-8 h-8 bg-teal-500 rounded-full border-2 border-gray-800"></div>
                 ))}
               </div>
               <div className={`w-3 h-3 rounded-full ${room.isActive ? 'bg-green-400' : 'bg-gray-400'}`}></div>
@@ -156,7 +156,7 @@ function CommunityCard() {
         ))}
       </div>
 
-      <button className="w-full mt-4 bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition duration-300 flex items-center justify-center space-x-2">
+      <button className="w-full mt-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-semibold py-3 rounded-xl hover:from-teal-700 hover:to-cyan-700 transition duration-300 flex items-center justify-center space-x-2">
         <Plus className="w-4 h-4" />
         <span>Create Study Room</span>
       </button>
@@ -170,7 +170,7 @@ function AILearningHub() {
   return (
     <div className="bg-gray-900 p-6 rounded-2xl h-full flex flex-col">
       <div className="flex items-center space-x-3 mb-6">
-        <div className="p-3 bg-blue-600 rounded-xl">
+        <div className="p-3 bg-teal-600 rounded-xl">
           <Brain className="w-6 h-6 text-white" />
         </div>
         <div>
@@ -183,7 +183,7 @@ function AILearningHub() {
       <div className="flex-grow bg-gray-800/30 rounded-xl p-4 mb-4 overflow-y-auto">
         <div className="space-y-4">
           <div className="flex items-start space-x-3">
-            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center">
               <Brain className="w-4 h-4 text-white" />
             </div>
             <div className="bg-gray-700 rounded-xl rounded-tl-none p-3 max-w-xs">
@@ -203,9 +203,9 @@ function AILearningHub() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Ask about study techniques, upload notes, or request a quiz..."
-          className="flex-grow px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+          className="flex-grow px-4 py-3 bg-gray-800 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-teal-500"
         />
-        <button className="bg-blue-600 text-white p-3 rounded-xl hover:bg-blue-700 transition duration-300">
+        <button className="bg-teal-600 text-white p-3 rounded-xl hover:bg-teal-700 transition duration-300">
           <MessageSquare className="w-5 h-5" />
         </button>
       </div>
@@ -364,7 +364,7 @@ export default function Dashboard() {
                   <option>Max 4 participants</option>
                   <option>Max 6 participants</option>
                 </select>
-                <button className="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition duration-300">
+                <button className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-semibold py-3 rounded-xl hover:from-teal-700 hover:to-cyan-700 transition duration-300">
                   Create Room
                 </button>
               </div>
@@ -385,7 +385,7 @@ export default function Dashboard() {
           <div className="bg-gray-900 p-6 rounded-2xl">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-2xl font-bold text-white">Study Goals</h3>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition duration-300 flex items-center space-x-2">
+              <button className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-xl hover:from-teal-700 hover:to-cyan-700 transition duration-300 flex items-center space-x-2">
                 <Plus className="w-4 h-4" />
                 <span>New Goal</span>
               </button>
@@ -410,7 +410,7 @@ export default function Dashboard() {
                     </div>
                     <div className="w-full bg-gray-700 rounded-full h-2">
                       <div 
-                        className="bg-blue-600 h-2 rounded-full"
+                        className="bg-teal-600 h-2 rounded-full"
                         style={{ width: `${goal.progress}%` }}
                       ></div>
                     </div>
@@ -419,7 +419,7 @@ export default function Dashboard() {
                     <button className="flex-1 bg-gray-700 text-white py-2 px-3 rounded-lg text-sm hover:bg-gray-600 transition-colors">
                       View
                     </button>
-                    <button className="flex-1 bg-blue-600 text-white py-2 px-3 rounded-lg text-sm hover:bg-blue-700 transition-colors">
+                    <button className="flex-1 bg-teal-600 text-white py-2 px-3 rounded-lg text-sm hover:bg-teal-700 transition-colors">
                       Update
                     </button>
                   </div>
@@ -441,7 +441,7 @@ export default function Dashboard() {
               {/* Profile Settings */}
               <div className="bg-gray-800/50 p-6 rounded-xl">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 bg-blue-600 rounded-lg">
+                  <div className="p-2 bg-teal-600 rounded-lg">
                     <User className="w-5 h-5 text-white" />
                   </div>
                   <h4 className="text-xl font-semibold text-white">Profile</h4>
@@ -465,7 +465,7 @@ export default function Dashboard() {
                       disabled
                     />
                   </div>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                  <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
                     Update Profile
                   </button>
                 </div>
@@ -474,7 +474,7 @@ export default function Dashboard() {
               {/* Study Settings */}
               <div className="bg-gray-800/50 p-6 rounded-xl">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 bg-blue-600 rounded-lg">
+                  <div className="p-2 bg-teal-600 rounded-lg">
                     <Brain className="w-5 h-5 text-white" />
                   </div>
                   <h4 className="text-xl font-semibold text-white">Study Preferences</h4>
@@ -501,7 +501,7 @@ export default function Dashboard() {
                     <span className="text-gray-300">Notifications</span>
                     <div className="relative">
                       <input type="checkbox" className="sr-only" defaultChecked />
-                      <div className="w-12 h-6 bg-blue-600 rounded-full shadow-inner"></div>
+                      <div className="w-12 h-6 bg-teal-600 rounded-full shadow-inner"></div>
                       <div className="absolute w-4 h-4 bg-white rounded-full shadow top-1 right-1"></div>
                     </div>
                   </div>
@@ -511,7 +511,7 @@ export default function Dashboard() {
               {/* Theme Settings */}
               <div className="bg-gray-800/50 p-6 rounded-xl">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 bg-blue-600 rounded-lg">
+                  <div className="p-2 bg-teal-600 rounded-lg">
                     <Moon className="w-5 h-5 text-white" />
                   </div>
                   <h4 className="text-xl font-semibold text-white">Appearance</h4>
@@ -520,7 +520,7 @@ export default function Dashboard() {
                   <div>
                     <label className="block text-gray-300 text-sm font-medium mb-2">Theme</label>
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="p-3 bg-gray-900 border-2 border-blue-600 rounded-lg cursor-pointer">
+                      <div className="p-3 bg-gray-900 border-2 border-teal-600 rounded-lg cursor-pointer">
                         <div className="flex items-center space-x-2">
                           <Moon className="w-4 h-4 text-white" />
                           <span className="text-white text-sm">Dark</span>
@@ -537,7 +537,7 @@ export default function Dashboard() {
                   <div>
                     <label className="block text-gray-300 text-sm font-medium mb-2">Accent Color</label>
                     <div className="flex space-x-3">
-                      <div className="w-8 h-8 bg-blue-600 rounded-full border-2 border-white cursor-pointer"></div>
+                      <div className="w-8 h-8 bg-teal-600 rounded-full border-2 border-white cursor-pointer"></div>
                       <div className="w-8 h-8 bg-green-600 rounded-full border-2 border-transparent cursor-pointer"></div>
                       <div className="w-8 h-8 bg-purple-600 rounded-full border-2 border-transparent cursor-pointer"></div>
                       <div className="w-8 h-8 bg-red-600 rounded-full border-2 border-transparent cursor-pointer"></div>
@@ -549,7 +549,7 @@ export default function Dashboard() {
               {/* Privacy Settings */}
               <div className="bg-gray-800/50 p-6 rounded-xl">
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 bg-blue-600 rounded-lg">
+                  <div className="p-2 bg-teal-600 rounded-lg">
                     <Shield className="w-5 h-5 text-white" />
                   </div>
                   <h4 className="text-xl font-semibold text-white">Privacy & Data</h4>
@@ -562,7 +562,7 @@ export default function Dashboard() {
                     </div>
                     <div className="relative">
                       <input type="checkbox" className="sr-only" defaultChecked />
-                      <div className="w-12 h-6 bg-blue-600 rounded-full shadow-inner"></div>
+                      <div className="w-12 h-6 bg-teal-600 rounded-full shadow-inner"></div>
                       <div className="absolute w-4 h-4 bg-white rounded-full shadow top-1 right-1"></div>
                     </div>
                   </div>
@@ -573,7 +573,7 @@ export default function Dashboard() {
                     </div>
                     <div className="relative">
                       <input type="checkbox" className="sr-only" defaultChecked />
-                      <div className="w-12 h-6 bg-blue-600 rounded-full shadow-inner"></div>
+                      <div className="w-12 h-6 bg-teal-600 rounded-full shadow-inner"></div>
                       <div className="absolute w-4 h-4 bg-white rounded-full shadow top-1 right-1"></div>
                     </div>
                   </div>
@@ -587,7 +587,7 @@ export default function Dashboard() {
             {/* Save Button */}
             <div className="mt-8 flex justify-end">
               <button 
-                className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors font-semibold"
+                className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-6 py-3 rounded-xl hover:from-teal-700 hover:to-cyan-700 transition-colors font-semibold"
                 onClick={() => addNotification('Settings saved successfully!', 'success')}
               >
                 Save Changes
@@ -610,7 +610,7 @@ export default function Dashboard() {
       {/* Header */}
       <header className="bg-gray-900 mx-6 mt-6 p-4 rounded-2xl flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <div className="p-2 bg-blue-600 rounded-xl">
+          <div className="p-2 bg-teal-600 rounded-xl">
             <Brain className="w-8 h-8 text-white" />
           </div>
           <div>
@@ -626,7 +626,7 @@ export default function Dashboard() {
           <button className="p-3 text-gray-400 hover:text-white hover:bg-gray-700 rounded-xl transition-colors">
             <Bell className="w-5 h-5" />
           </button>
-          <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold">
+          <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center text-white font-bold">
             {getInitials(currentUser?.displayName)}
           </div>
         </div>
